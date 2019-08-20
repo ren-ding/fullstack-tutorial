@@ -3,7 +3,7 @@ const {RESTDataSource} = require('apollo-datasource-rest');
 class LauchAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'https://api.spacexdata.come/v2/';
+        this.baseURL = 'https://api.spacexdata.com/v2/';
     }
 
     async getAllLaunches() {
