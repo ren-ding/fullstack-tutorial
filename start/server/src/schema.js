@@ -1,9 +1,18 @@
 const { gql } = require('apollo-server');
 const typeDefs = gql`
     type Query {
-        launches:[Launch]!
+        launches(
+            pageSize: Int
+            after: String
+        ): LaunchConnection!
         launch(id: ID!): Launch
         me: User
+    }
+
+    type LaunchConnection {
+        cursor: String!
+        hasMore: Boolean!
+        launches: [Launch]!
     }
 
     type Launch {
@@ -28,7 +37,7 @@ const typeDefs = gql`
 
     type Mission {
         name:String
-        missionPatch(size: PatchSize): String
+        missionPatch(mission: String, size: PatchSize): String
     }
 
     type Mutation {
